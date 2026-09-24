@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Gestión Académica - AWS</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f4f6f9; }
+    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    h1 { color: #232f3e; }
+    button { background: #ff9900; border: none; padding: 10px 15px; color: white; cursor: pointer; border-radius: 4px; }
+    pre { background: #111; color: #00ff00; padding: 15px; border-radius: 5px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🎓 Sistema Académico desplegado en AWS</h1>
+    <p>Servicio Cloud-Native para la gestión de actividades y consumo de API REST.</p>
+    <button onclick="cargarDatos()">Cargar Actividades (API)</button>
+    <h3>Respuesta de la API Backend:</h3>
+    <pre id="resultado">Presiona el botón para consultar la API...</pre>
+  </div>
+
+  <script>
+    async function cargarDatos() {
+      const res = await fetch('/api/actividades');
+      const data = await res.json();
+      document.getElementById('resultado').innerText = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
